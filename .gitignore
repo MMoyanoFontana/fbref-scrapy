@@ -1,0 +1,16 @@
+# ---- General ----
+.DS_Store
+Thumbs.db
+*.log
+*.env
+.env.*
+
+# ---- Python (Backend) ----
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+.env
+*.egg-info/
+dist/
+build/

@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.11.10
+    hooks:
+      - id: ruff-check
+        args: [--config=backend/pyproject.toml, --fix]
+      - id: ruff-format
+        args: [--config=backend/pyproject.toml]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.15.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - "pydantic==v2.6.2"
+          - "sqlmodel==0.0.16"
+        args: [--config=backend/pyproject.toml]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-added-large-files

@@ -1,0 +1,49 @@
+
+[project]
+name = "fbref-scarppy"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "An fbref scraper API"
+readme = "README.md"
+dependencies = [
+    "beautifulsoup4>=4.13.4",
+    "fastapi[standard]>=0.115.12",
+    "lxml>=6.0.0",
+    "pandas>=2.3.0",
+    "requests>=2.32.4",
+    "sqlalchemy>=2.0.41",
+    "sqlmodel>=0.0.24",
+]
+
+[tool.uv.scripts]
+dev = "fastapi dev app/main.py"
+
+[tool.ruff]
+line-length = 88
+exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B"]
+unfixable = ["B"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+ignore_missing_imports = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+install_types = true
+
+
+[dependency-groups]
+dev = [
+    "mypy>=1.16.1",
+    "pre-commit>=4.2.0",
+    "ruff>=0.12.1",
+]
